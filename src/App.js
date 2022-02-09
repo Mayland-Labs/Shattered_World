@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import { Canvas, useFrame, useLoader, extend, useThree } from '@react-three/fiber';
+import CameraControls from "./Utils/Camera";
+import LoadingBar from "./Utils/LoadingBar";
+import Sources from "./Utils/Sources";
+import Enviroment from "./World/Environment";
+import WorldGenerator from "./World/WorldGenerator"
 import './App.css';
 
 function App() {
+
+  const [hexArr, setHexArr] = useState([]);
+
+  useEffect(() => {
+    const tileArr = JSON.parse(new URLSearchParams(window.location.search).get("data"));
+    console.log("startedasdasdasds", tileArr);
+    setHexArr(tileArr)
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Canvas>
+       <color attach="background" args={['#000000']} />
+        <Enviroment />
+        <CameraControls />
+        <WorldGenerator hexArr = {hexArr}/>
+        <axesHelper />
+      </Canvas>
+      <LoadingBar sources = {Sources}/>
     </div>
   );
 }

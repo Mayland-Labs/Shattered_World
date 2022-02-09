@@ -1,0 +1,216 @@
+
+.logoContainer{
+  position: relative;
+  width:80vh;
+  height: 36vh;
+}
+
+.crystalGray {
+  background-image: url("../../public/LoadingBar/crystal.png");
+  background-size: 30vh;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 30vh;
+  top: 5vh;
+  left: 25vh;
+  -webkit-filter: drop-shadow(1px 1px 1rem #bdbdbd)
+    drop-shadow(-1px -1px 1rem #bdbdbd);
+  filter: drop-shadow(1px 1px 1rem #bdbdbd) drop-shadow(-1px -1px 1rem #bdbdbd)
+    grayscale(1); 
+  object-fit: fill;
+}
+
+.crystalActive {
+  position: absolute;
+  top: 15vh;
+  left: 35.5vh;
+  width: 10vh;
+  -webkit-filter: drop-shadow(1px 1px 1rem #48c7e7)
+    drop-shadow(-1px -1px 1rem #48c7e7);
+  filter: drop-shadow(1px 1px 1rem #48c7e7) drop-shadow(-1px -1px 1rem #48c7e7);
+  animation: animationcrystalActive 2s linear 1;
+}
+
+@keyframes animationcrystalActive {
+  0% {
+    width: 30vh;
+    top: 5vh;
+    left: 25vh;
+  }
+  100% {
+    top: 15vh;
+    left: 35.5vh;
+    width: 10vh;
+  }
+}
+
+.crystal {
+  position: absolute;
+  width: 30vh;
+  top: 5vh;
+  left: 25vh;
+  -webkit-filter: drop-shadow(1px 1px 1rem #48c7e7)
+    drop-shadow(-1px -1px 1rem #48c7e7);
+  filter: drop-shadow(1px 1px 1rem #48c7e7) drop-shadow(-1px -1px 1rem #48c7e7);
+  animation: animationcrystal 2s linear infinite;
+}
+
+@keyframes animationcrystal {
+  0% {
+    -webkit-filter: drop-shadow(1px 1px 0.5rem #48c7e7)
+      drop-shadow(-1px -1px 0.5rem #48c7e7);
+    filter: drop-shadow(1px 1px 0.5rem #48c7e7)
+      drop-shadow(-1px -1px 0.5rem #48c7e7);
+  }
+  50% {
+    -webkit-filter: drop-shadow(1px 1px 1.5rem #48c7e7)
+      drop-shadow(-1px -1px 1.5rem #48c7e7);
+    filter: drop-shadow(1px 1px 1.5rem #48c7e7)
+      drop-shadow(-1px -1px 1.5rem #48c7e7);
+  }
+  100% {
+    -webkit-filter: drop-shadow(1px 1px 0.5rem #48c7e7)
+      drop-shadow(-1px -1px 0.5rem #48c7e7);
+    filter: drop-shadow(1px 1px 0.5rem #48c7e7)
+      drop-shadow(-1px -1px 0.5rem #48c7e7);
+  }
+}
+
+.logo {
+  position: absolute;
+  width: 5vh;
+  top: 18vh;
+  left: 38vh;
+  animation: animationlogo 2s linear infinite;
+}
+
+@keyframes animationlogo {
+  0% {
+    -webkit-filter: drop-shadow(1px 1px 0.5rem #1b100b)
+      drop-shadow(-1px -1px 0.5rem #1b100b);
+    filter: drop-shadow(1px 1px 0.5rem #1b100b)
+      drop-shadow(-1px -1px 0.5rem #1b100b);
+  }
+  50% {
+    -webkit-filter: drop-shadow(1px 1px 1.5rem #1b100b)
+      drop-shadow(-1px -1px 1.5rem #1b100b);
+    filter: drop-shadow(1px 1px 1.5rem #1b100b)
+      drop-shadow(-1px -1px 1.5rem #1b100b);
+  }
+  100% {
+    -webkit-filter: drop-shadow(1px 1px 0.5rem #1b100b)
+      drop-shadow(-1px -1px 0.5rem #1b100b);
+    filter: drop-shadow(1px 1px 0.5rem #1b100b)
+      drop-shadow(-1px -1px 0.5rem #1b100b);
+  }
+}
+
+
+.logoActive {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 80vh;
+  animation: animationlogoActive 2s linear 1;
+}
+
+@keyframes animationlogoActive {
+  0% {
+    width: 5vh;
+    top: 18vh;
+    left: 38vh;
+  }
+  100% {
+    width: 80vh;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+@media only screen and (max-width: 900px) {
+  .logoContainer{
+    position: relative;
+    width: 40vh;
+    height: 18.4vh;
+  }
+  
+  .logoActive {
+    position: absolute;
+    top: -10vh;
+    left:0;
+    width: 40vh;
+    animation: animationlogoActive 2s linear 1;
+  }
+
+  .crystalActive {
+    position: absolute;
+    top: -3.5vh;
+    left: 17.3vh;
+    width: 6vh;
+    -webkit-filter: drop-shadow(1px 1px 1rem #48c7e7)
+      drop-shadow(-1px -1px 1rem #48c7e7);
+    filter: drop-shadow(1px 1px 1rem #48c7e7) drop-shadow(-1px -1px 1rem #48c7e7);
+    animation: animationcrystalActive 2s linear 1;
+  }
+
+  .crystal {
+    position: absolute;
+    width: 30vh;
+    top: -10vh;
+    left: 6vh;
+    -webkit-filter: drop-shadow(1px 1px 1rem #48c7e7)
+      drop-shadow(-1px -1px 1rem #48c7e7);
+    filter: drop-shadow(1px 1px 1rem #48c7e7) drop-shadow(-1px -1px 1rem #48c7e7);
+    animation: animationcrystal 2s linear infinite;
+  }
+
+  @keyframes animationcrystalActive {
+    0% {
+      width: 30vh;
+    top: -10vh;
+    left: 6vh;
+    }
+    100% {
+      top: -3.5vh;
+    left: 17.3vh;
+    width: 6vh;
+    }
+  }
+
+  .crystalGray {
+    background-image: url("../../public/LoadingBar/crystal.png");
+    background-size: 30vh;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 30vh;
+    top: -10vh;
+    left: 6vh;
+    -webkit-filter: drop-shadow(1px 1px 1rem #bdbdbd)
+      drop-shadow(-1px -1px 1rem #bdbdbd);
+    filter: drop-shadow(1px 1px 1rem #bdbdbd) drop-shadow(-1px -1px 1rem #bdbdbd)
+      grayscale(1); 
+    object-fit: fill;
+  }
+
+  .logo {
+    position: absolute;
+    width: 5vh;
+    top: 0vh;
+    left: 18vh;
+    animation: animationlogo 2s linear infinite;
+  }
+
+  @keyframes animationlogoActive {
+    0% {
+      width: 5vh;
+      top: 0vh;
+      left: 18vh;
+    }
+    100% {
+      top: -10vh;
+    left:0;
+    width: 40vh;
+    }
+  }
+}
