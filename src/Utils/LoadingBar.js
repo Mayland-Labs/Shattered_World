@@ -2,27 +2,27 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import stylesLoading from '../Styles/Loading.module.css';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import React, { useState, useEffect } from 'react';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
+import { useGLT, Loader } from '@react-three/drei'
+import Forest from "../World/Tiles/Forest";
 import { gsap } from 'gsap'
-import { Raycaster } from 'three'
 
-function LoadingBar(src) {
-    const [stop, setStop] = useState(true)
+function LoadingBar(props) {
     const [barProgres, setBarProgres] = useState({ num: 0 })
     const [effect, setEffect] = useState(true)
-    const [items, setItems] = useState({})
 
     // useEffect(() => {
     //     console.log("ITEMS", items);
     // },[items])
 
+    // useEffect(() => {
+    //     console.log("model was loaded", nodes)
+    // }, [nodes])
+
     useEffect(() => {
-        let sceneReady = false;
-
-        const sources = src["sources"];
-
-        let toLoad = sources.length;
-        let loaded = 0;
+        const sources = props.sources;
 
         const loadingBarBackground = document.querySelector('.loadingBackground')
 
@@ -33,16 +33,15 @@ function LoadingBar(src) {
                 window.setTimeout(() => {
                     // Animate overlay
 
-                    sceneReady = true;
-
                     // Update loadingBarElement
 
                     setEffect(false);
 
-                    console.log("sadasdadadadsada")
                     gsap.to(loadingBarBackground, { duration: 3, opacity: 0, delay: 3 })
                     gsap.to(loadingBarBackground, { duration: 1, display: "none", delay: 5 })
                 }, 500)
+                props.assetHandler(newItems);
+
             },
 
             // Progress
@@ -50,37 +49,68 @@ function LoadingBar(src) {
                 // Calculate the progress and update the loadingBarElement
                 // console.log(itemsLoaded, itemsTotal)
                 const progressRatio = itemsLoaded / itemsTotal
-
-                console.log(progressRatio)
+                // console.log(progressRatio)
                 setBarProgres({ ...barProgres, num: progressRatio * 100 })
             }
         )
-
-
 
         const loaders = {}
         loaders.cubeTextureLoader = new THREE.CubeTextureLoader(loadingManager)
         loaders.gltfLoader = new GLTFLoader(loadingManager)
         loaders.textureLoader = new THREE.TextureLoader(loadingManager)
+        loaders.gltfDracoLoader = new DRACOLoader(loadingManager);
+        loaders.fbxLoader = new FBXLoader();
+        loaders.gltfDracoLoader.setDecoderPath('/draco/');
+        loaders.gltfLoader.setDRACOLoader(loaders.gltfDracoLoader)
+
+        let newItems = {};
 
         sources.forEach(source => {
-            if (source.type == "cubeTexture") {
-                loaders.cubeTextureLoader.load(
-                    source.path,
-                    (file) => {
-                        // items[source.name] = file;
-                        setItems({...items, [source.name]: file})
-                    }
-                )
+            switch (source.type) {
+                case "cubeTexture":
+                    loaders.cubeTextureLoader.load(
+                        source.path,
+                        (file) => {
+                            // items[source.category][source.name] = file;
+                            archiver(source, file)
+                        }
+                    )
+                    break;
+                case "GLTF Draco Model":
+                    loaders.gltfLoader.load(
+                        source.path,
+                        (file) => {
+                            // console.log("FILE", file)
+                            // items[source.category][source.name] = file;
+                            archiver(source, file)
+                        }
+                    )
+                    break;
+                // case "FBX Model":
+                //     loaders.fbxLoader.load(
+                //         source.path,
+                //         (file) => {
+                //             console.log("FBX READY", file)
+                //             // items[source.category][source.name] = file;
+                //             archiver(source, file)
+                //         }
+                //     )
+                //     break;
             }
         });
 
-        console.log("SOURCES", sources)
+        const archiver = (source, file) => {
+            if (newItems[source.category] == undefined) {
+                newItems[source.category] = {};
+            }
 
+            newItems[source.category][source.name] = file;
+        }
     }, []);
 
+
     const styleCrystal = {
-        height:  `${ 50 -(0.5  *barProgres.num)}vh`
+        height: `${50 - (0.5 * barProgres.num)}vh`
     };
 
     return (
@@ -92,6 +122,8 @@ function LoadingBar(src) {
             </div>
         </div>
     );
-};
+
+
+}
 
 export default LoadingBar;

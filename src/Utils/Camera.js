@@ -4,10 +4,10 @@ import {
   useThree
 } from "@react-three/fiber";
 import React, { useRef, useState } from 'react'
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { FirstPersonControls } from '@react-three/drei'
 
 
-extend({ OrbitControls });
+// extend({ FlyControls });
 
 
 const CameraControls = () => {
@@ -17,21 +17,16 @@ const CameraControls = () => {
 
   const {
     camera,
-    gl: { domElement },
   } = useThree();
-  // Ref to the controls, so that we can update them on every frame using useFrame
-  const controls = useRef();
 
-  useFrame((state) => controls.current.update());
+  camera.position.set(0,2,5)
+
+  // Ref to the controls, so that we can update them on every frame using useFrame
+  // const controls = useRef();
+
+  // useFrame((state) => controls.current.update());
   return (
-    <orbitControls
-      ref={controls}
-      // maxPolarAngle={Math.PI / 2 - 0.3}
-      // minPolarAngle={0}
-      maxDistance={10}
-      minDistance={1}
-      args={[camera, domElement]}
-    />
+    <FirstPersonControls autoForward={false} dragToLook={false} movementSpeed={1.0} lookSpeed={0.018} />
   );
 };
 

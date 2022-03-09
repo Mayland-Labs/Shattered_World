@@ -4,29 +4,40 @@ import CameraControls from "./Utils/Camera";
 import LoadingBar from "./Utils/LoadingBar";
 import Sources from "./Utils/Sources";
 import Enviroment from "./World/Environment";
-import WorldGenerator from "./World/WorldGenerator"
+import WorldGenerator from "./World/WorldGenerator";
+import Avatar from "./Utils/Avatar";
+import { useGLT, Loader } from '@react-three/drei'
+import { Suspense } from 'react'
 import './App.css';
 
 function App() {
 
   const [hexArr, setHexArr] = useState([]);
+  const [assets, setAssets] = useState({});
 
   useEffect(() => {
     const tileArr = JSON.parse(new URLSearchParams(window.location.search).get("data"));
-    console.log("startedasdasdasds", tileArr);
     setHexArr(tileArr)
   }, []);
+
+  const assetHandler = (assets) => {
+    console.log("Assets Loaded", assets);
+    setAssets(assets);;
+  }
+
 
   return (
     <div className="App">
       <Canvas>
-       <color attach="background" args={['#000000']} />
-        <Enviroment />
+        <ambientLight intensity={0.9}/>
+        <color attach="background" args={['#000000']} />
+        {assets.envMap && <Enviroment envMap={assets.envMap} />}
         <CameraControls />
-        <WorldGenerator hexArr = {hexArr}/>
+        {assets.world && <WorldGenerator hexArr={hexArr} worldAssets={assets.world} buildings={assets.buildings}/>}
         <axesHelper />
+        {assets.avatar && <Avatar avatar = {assets.avatar}></Avatar>}
       </Canvas>
-      <LoadingBar sources = {Sources}/>
+      <LoadingBar sources={Sources} assetHandler={assetHandler} />
     </div>
   );
 }
