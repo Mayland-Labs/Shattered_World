@@ -7,6 +7,7 @@ import Enviroment from "./World/Environment";
 import WorldGenerator from "./World/WorldGenerator";
 import Avatar from "./Utils/Avatar";
 import { VRCanvas, DefaultXRControllers } from '@react-three/xr'
+import { Sky } from '@react-three/drei'
 import { useGLT, Loader } from '@react-three/drei'
 import { Suspense } from 'react'
 import './App.css';
@@ -34,6 +35,7 @@ function App() {
         <ambientLight intensity={0.9} />
         <color attach="background" args={['#000000']} />
         {assets.envMap && <Enviroment envMap={assets.envMap} />}
+        <Sky distance={45000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
         <CameraControls />
         {assets.world && <WorldGenerator hexArr={hexArr} worldAssets={assets.world} buildings={assets.buildings} />}
         <axesHelper />
