@@ -22,9 +22,9 @@ function WorldGenerator(props) {
     setWorld(biomes);
   }, [])
 
-  let diameter = 1;
-  let radio = 0.48;
-  let radioX = 0.84;
+  let diameter = 100;
+  let radio = (diameter * 0.96) / 2
+  let radioX = diameter * 0.84;
 
   const generateHexen = (maxCircles) => {
     const zMatrix = [-radio, -diameter, -radio, radio, diameter, radio];

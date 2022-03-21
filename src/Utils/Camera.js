@@ -19,7 +19,7 @@ const CameraControls = () => {
     camera,
   } = useThree();
 
-  camera.position.set(0,0.65,0)
+  camera.position.set(0,10,0)
 
   // Ref to the controls, so that we can update them on every frame using useFrame
   // const controls = useRef();
