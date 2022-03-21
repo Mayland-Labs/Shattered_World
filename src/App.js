@@ -6,6 +6,7 @@ import Sources from "./Utils/Sources";
 import Enviroment from "./World/Environment";
 import WorldGenerator from "./World/WorldGenerator";
 import Avatar from "./Utils/Avatar";
+import { VRCanvas } from '@react-three/xr'
 import { useGLT, Loader } from '@react-three/drei'
 import { Suspense } from 'react'
 import './App.css';
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <Canvas>
+      <VRCanvas gl={{ antialias: true }} dpr={window.devicePixelRatio}>
         <ambientLight intensity={0.9}/>
         <color attach="background" args={['#000000']} />
         {assets.envMap && <Enviroment envMap={assets.envMap} />}
@@ -36,7 +37,7 @@ function App() {
         {assets.world && <WorldGenerator hexArr={hexArr} worldAssets={assets.world} buildings={assets.buildings}/>}
         <axesHelper />
         {assets.avatar && <Avatar avatar = {assets.avatar}></Avatar>}
-      </Canvas>
+      </VRCanvas>
       <LoadingBar sources={Sources} assetHandler={assetHandler} />
     </div>
   );
