@@ -5,6 +5,7 @@ import {
 } from "@react-three/fiber";
 import React, { useRef, useState } from 'react'
 import { FirstPersonControls, OrbitControls } from '@react-three/drei'
+import { useXR } from '@react-three/xr'
 
 
 // extend({ FlyControls });
@@ -15,11 +16,11 @@ const CameraControls = () => {
   // We need these to setup the OrbitControls component.
   // https://threejs.org/docs/#examples/en/controls/OrbitControls
 
-  const {
-    camera,
-  } = useThree();
 
-  camera.position.set(0,300,0)
+  const XRConfig = useXR();
+  XRConfig.player.position.set(0,10,0)
+
+  // camera.position.set(0,600,0)
 
   // Ref to the controls, so that we can update them on every frame using useFrame
   // const controls = useRef();
