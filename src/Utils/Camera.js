@@ -4,7 +4,7 @@ import {
   useThree
 } from "@react-three/fiber";
 import React, { useRef, useState } from 'react'
-import { FirstPersonControls } from '@react-three/drei'
+import { FirstPersonControls, OrbitControls } from '@react-three/drei'
 
 
 // extend({ FlyControls });
@@ -19,14 +19,14 @@ const CameraControls = () => {
     camera,
   } = useThree();
 
-  camera.position.set(0,100,0)
+  camera.position.set(0,300,0)
 
   // Ref to the controls, so that we can update them on every frame using useFrame
   // const controls = useRef();
 
   // useFrame((state) => controls.current.update());
   return (
-    <FirstPersonControls autoForward={false} dragToLook={false} movementSpeed={1.0} lookSpeed={0.018} />
+    <OrbitControls  />
   );
 };
 

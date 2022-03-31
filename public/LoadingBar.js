@@ -21,11 +21,11 @@ function LoadingBar(props) {
     // const { nodes, materials } = useGLTF("/plain.gltf");
 
     useEffect(() => {
-        console.log("NODES", nodes)
+        // console.log("NODES", nodes)
 
         const sources = props.sources;
 
-        console.log(props.sources[1].path, "lolololololsdads")
+        // console.log(props.sources[1].path, "lolololololsdads")
 
         const loadingBarBackground = document.querySelector('.loadingBackground')
 
@@ -84,7 +84,7 @@ function LoadingBar(props) {
                     loaders.gltfLoader.load(
                         source.path,
                         (file) => {
-                            console.log("FILE", file)
+                            // console.log("FILE", file)
                             // items[source.category][source.name] = file;
                             archiver(source, file)
                         }
