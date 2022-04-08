@@ -3,9 +3,9 @@ import {
   extend,
   useThree
 } from "@react-three/fiber";
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { FirstPersonControls, OrbitControls } from '@react-three/drei'
-import { useXR } from '@react-three/xr'
+import { useXR, useXRFrame } from '@react-three/xr'
 
 
 // extend({ FlyControls });
@@ -16,9 +16,21 @@ const CameraControls = () => {
   // We need these to setup the OrbitControls component.
   // https://threejs.org/docs/#examples/en/controls/OrbitControls
 
-
+  const scene = useThree()
+  // useEffect(() => void gl.setPixelRatio(window.devicePixelRatio || 2), [])
   const XRConfig = useXR();
-  XRConfig.player.position.set(0,10,0)
+  useXRFrame((time, xrFrame) => {
+    // do something on each frame of an active XR session
+    // scene.setDpr(10);
+    // scene.viewport.aspect = 1
+    // console.log("scene", scene.gl.getPixelRatio())
+    // scene.viewport.initialDpr = 10;
+
+
+  })
+
+  console.log(XRConfig)
+  XRConfig.player.position.set(0,10,0);
 
   // camera.position.set(0,600,0)
 
@@ -27,7 +39,8 @@ const CameraControls = () => {
 
   // useFrame((state) => controls.current.update());
   return (
-    <OrbitControls  />
+    // <OrbitControls  />
+    null
   );
 };
 

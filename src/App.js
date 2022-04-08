@@ -8,7 +8,7 @@ import WorldGenerator from "./World/WorldGenerator";
 import Avatar from "./Utils/Avatar";
 import { VRCanvas, DefaultXRControllers } from '@react-three/xr'
 import { Sky } from '@react-three/drei'
-import { useGLT, Loader } from '@react-three/drei'
+import { useGLT, Loader, Box } from '@react-three/drei'
 import { Suspense } from 'react'
 import './App.css';
 
@@ -19,6 +19,7 @@ function App() {
 
   useEffect(() => {
     const tileArr = JSON.parse(new URLSearchParams(window.location.search).get("data"));
+    console.log("dpr", window.devicePixelRatio);
     setHexArr(tileArr)
   }, []);
 
@@ -27,14 +28,19 @@ function App() {
     setAssets(assets);;
   }
 
-
   return (
     <div className="App">
-      <VRCanvas gl={{ antialias: true }} dpr={window.devicePixelRatio}>
+      <VRCanvas dpr={window.devicePixelRatio} vr ={true}
+      gl={{
+        antialias: true, 
+        alpha: false,
+      }} >
+      {/* <Box position={[0, 5, -6]} scale={[10, 10, 10]}>
+        <meshStandardMaterial color="black" />
+      </Box> */}
         <DefaultXRControllers />
-        <ambientLight intensity={0.9} />
-        <color attach="background" args={['#000000']} />
-        {assets.envMap && <Enviroment envMap={assets.envMap} />}
+        <ambientLight />
+        {/* {assets.envMap && <Enviroment envMap={assets.envMap} />} */}
         <Sky distance={45000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
         <CameraControls />
         {assets.world && <WorldGenerator hexArr={hexArr} worldAssets={assets.world} buildings={assets.buildings} />}
