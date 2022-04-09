@@ -23,10 +23,6 @@ const CameraControls = () => {
   // useEffect(() => void gl.setPixelRatio(window.devicePixelRatio || 2), [])
   const XRConfig = useXR();
   useXRFrame((time, xrFrame) => {
-<<<<<<< HEAD
-=======
-    // console.log(scene)
->>>>>>> d99984050ed85aa10313bc9cea7ee910e8a8e7b7
     
     // do something on each frame of an active XR session
     // scene.setDpr(10);
