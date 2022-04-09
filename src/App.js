@@ -34,7 +34,7 @@ function App() {
       <VRCanvas dpr={window.devicePixelRatio}
       gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true}}
       onCreated = {({gl, scene}) => {
-        gl.xr.setFramebufferScaleFactor(1)
+        gl.xr.setFramebufferScaleFactor(0.5)
         gl.setPixelRatio(window.devicePixelRatio)
       }}>
      
