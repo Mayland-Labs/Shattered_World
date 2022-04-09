@@ -31,12 +31,23 @@ function App() {
 
   return (
     <div className="App">
+<<<<<<< HEAD
       <VRCanvas dpr={window.devicePixelRatio}
       // gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true}}
       // onCreated = {({gl, scene}) => {
       //   gl.xr.setFramebufferScaleFactor(0.2)
       //   gl.setPixelRatio(window.devicePixelRatio)
       // }}
+=======
+      <VRCanvas dpr={[1, 2]}
+
+        // gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true }}
+
+        // onCreated={({ gl, scene }) => {
+        //   gl.xr.setFramebufferScaleFactor(1);
+        //   //scene.background = new THREE.Color('#373740')
+        // }}
+>>>>>>> d99984050ed85aa10313bc9cea7ee910e8a8e7b7
       >
         {/* <Box position={[0, 5, -6]} scale={[10, 10, 10]}>
         <meshStandardMaterial color="black" />
