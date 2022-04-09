@@ -31,10 +31,12 @@ function App() {
 
   return (
     <div className="App">
-      <VRCanvas dpr={[1, 2]} 
-      pixelRatio={1.5}
-      gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true}}
-      framebufferScaleFactor = {0.5}
+      <VRCanvas dpr={window.devicePixelRatio}
+      // gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true}}
+      // onCreated = {({gl, scene}) => {
+      //   gl.xr.setFramebufferScaleFactor(0.2)
+      //   gl.setPixelRatio(window.devicePixelRatio)
+      // }}
       >
         {/* <Box position={[0, 5, -6]} scale={[10, 10, 10]}>
         <meshStandardMaterial color="black" />
