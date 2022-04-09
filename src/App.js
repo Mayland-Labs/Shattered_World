@@ -31,7 +31,13 @@ function App() {
 
   return (
     <div className="App">
-      <VRCanvas dpr={window.devicePixelRatio}>
+      <VRCanvas dpr={window.devicePixelRatio}
+      gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true}}
+      onCreated = {({gl, scene}) => {
+        gl.xr.setFramebufferScaleFactor(1)
+        gl.setPixelRatio(window.devicePixelRatio)
+      }}>
+     
         <DefaultXRControllers />
         <ambientLight />
         {/* {assets.envMap && <Enviroment envMap={assets.envMap} />} */}
