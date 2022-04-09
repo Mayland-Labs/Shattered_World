@@ -11,6 +11,7 @@ import { Sky } from '@react-three/drei'
 import { useGLT, Loader, Box } from '@react-three/drei'
 import { Suspense } from 'react'
 import './App.css';
+import { DstColorFactor } from 'three';
 
 function App() {
 
@@ -30,12 +31,11 @@ function App() {
 
   return (
     <div className="App">
-      <VRCanvas dpr={window.devicePixelRatio} vr ={true}
-      gl={{
-        antialias: true, 
-        alpha: false,
-      }} >
-      {/* <Box position={[0, 5, -6]} scale={[10, 10, 10]}>
+      <VRCanvas dpr={[1, 2]} 
+      pixelRatio={1.5}
+      gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true }}
+      >
+        {/* <Box position={[0, 5, -6]} scale={[10, 10, 10]}>
         <meshStandardMaterial color="black" />
       </Box> */}
         <DefaultXRControllers />
