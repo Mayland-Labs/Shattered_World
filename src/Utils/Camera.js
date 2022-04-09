@@ -17,10 +17,12 @@ const CameraControls = () => {
   // https://threejs.org/docs/#examples/en/controls/OrbitControls
 
   const scene = useThree()
+  // let ascene = scene.gl.xr.setFramebufferScaleFactor(0.5)
+  console.log(scene.gl)
+
   // useEffect(() => void gl.setPixelRatio(window.devicePixelRatio || 2), [])
   const XRConfig = useXR();
   useXRFrame((time, xrFrame) => {
-    // console.log(scene)
     
     // do something on each frame of an active XR session
     // scene.setDpr(10);
