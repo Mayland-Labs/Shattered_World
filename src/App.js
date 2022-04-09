@@ -35,10 +35,10 @@ function App() {
 
         gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true }}
 
-        onCreated={({ gl, scene }) => {
-          gl.xr.setFramebufferScaleFactor(1);
-          //scene.background = new THREE.Color('#373740')
-        }}
+        // onCreated={({ gl, scene }) => {
+        //   gl.xr.setFramebufferScaleFactor(1);
+        //   //scene.background = new THREE.Color('#373740')
+        // }}
       >
         {/* <Box position={[0, 5, -6]} scale={[10, 10, 10]}>
         <meshStandardMaterial color="black" />
