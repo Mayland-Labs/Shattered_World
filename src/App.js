@@ -33,7 +33,8 @@ function App() {
     <div className="App">
       <VRCanvas dpr={[1, 2]} 
       pixelRatio={1.5}
-      gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true }}
+      gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true}}
+      framebufferScaleFactor = {1}
       >
         {/* <Box position={[0, 5, -6]} scale={[10, 10, 10]}>
         <meshStandardMaterial color="black" />
