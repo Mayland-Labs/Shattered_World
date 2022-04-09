@@ -11,12 +11,12 @@ function Hex(props) {
 
   // console.log("position", position);
   //Animated Spawn
-  const {spawn} = useSpring({
-    from: { spawn: [position[0], -100, position[2]]},
-    to: {spawn: [position[0], 0, position[2]]},
-    delay: 1000 * props.delay,
-    config: {duration: 30000},
-});
+//   const {spawn} = useSpring({
+//     from: { spawn: [position[0], -100, position[2]]},
+//     to: {spawn: [position[0], 0, position[2]]},
+//     delay: 1000 * props.delay,
+//     config: {duration: 30000},
+// });
 
   // console.log("SPAWN", spawn)
   // console.log("POSITION", position);
@@ -65,7 +65,7 @@ function Hex(props) {
 
   return (
     <group>
-      {scene && <animated.primitive position={spawn} scale = {[20,20,20]} dispose={null} object={scene} rotation={[0, (1.5 * Math.PI) + (Math.PI / 3) * randomTilt, 0]} />}
+      {scene && <animated.primitive position={[position[0], 0, position[2]]} scale = {[20,20,20]} dispose={null} object={scene} rotation={[0, (1.5 * Math.PI) + (Math.PI / 3) * randomTilt, 0]} />}
       {buildings ? <primitive position={[portalPos[0], 0, portalPos[2]]} scale = {[20,20,20]} dispose={null} object={buildings.scene} rotation={[0, (1.5 * Math.PI), 0]} /> : null}
     </group>
   );
