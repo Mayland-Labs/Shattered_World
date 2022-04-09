@@ -9,16 +9,16 @@ import { TimelineLite } from "gsap/all";
 function Hex(props) {
   const [position, setPosition] = useState({ ...props.hex.position })
 
-  console.log("position", position);
+  // console.log("position", position);
   //Animated Spawn
   const {spawn} = useSpring({
-    from: { spawn: [position[0], -10, position[2]] },
+    from: { spawn: [position[0], -100, position[2]]},
     to: {spawn: [position[0], 0, position[2]]},
     delay: 1000 * props.delay,
     config: {duration: 30000},
 });
 
-  console.log("SPAWN", spawn)
+  // console.log("SPAWN", spawn)
   // console.log("POSITION", position);
   let auxPos = position;
 
@@ -38,11 +38,11 @@ function Hex(props) {
   let portalPos;
 
   if (props.hex.buildings) {
-    console.log("HEREEEEEEEE", props.hex.buildings)
+    // console.log("HEREEEEEEEE", props.hex.buildings)
     buildings = props.hex.buildings;
     // console.log("buildings",  buildings)
     portalPos = { ...position };
-    console.log("pportalHeight", portalPos);
+    // console.log("pportalHeight", portalPos);
   }
 
   //Height
@@ -65,8 +65,8 @@ function Hex(props) {
 
   return (
     <group>
-      {scene && <animated.primitive position={spawn} dispose={null} object={scene} rotation={[0, (1.5 * Math.PI) + (Math.PI / 3) * randomTilt, 0]} />}
-      {buildings ? <primitive position={[portalPos[0], 0, portalPos[2]]} dispose={null} object={buildings.scene} rotation={[0, (1.5 * Math.PI), 0]} /> : null}
+      {scene && <animated.primitive position={spawn} scale = {[20,20,20]} dispose={null} object={scene} rotation={[0, (1.5 * Math.PI) + (Math.PI / 3) * randomTilt, 0]} />}
+      {buildings ? <primitive position={[portalPos[0], 0, portalPos[2]]} scale = {[20,20,20]} dispose={null} object={buildings.scene} rotation={[0, (1.5 * Math.PI), 0]} /> : null}
     </group>
   );
 }

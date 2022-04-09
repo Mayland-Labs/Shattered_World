@@ -16,20 +16,77 @@ function WorldGenerator(props) {
   const [world, setWorld] = useState()
 
   useEffect(() => {
-    let positions = generateHexen(10);
+    // WebGPU()
+    let positions = generateHexen(1);
     let biomes = placeBiomes(positions);
-    console.log("PORTAL", props)
+    // console.log("PORTAL", props)
     setWorld(biomes);
   }, [])
 
-  let diameter = 1;
-  let radio = 0.48;
-  let radioX = 0.84;
+  // const WebGPU = async () => {
+  //   const adapter = await navigator.gpu.requestAdapter();
+  //   console.log("adapter", adapter);
+  //   if (!adapter) { return; }
+  //   const device = await adapter.requestDevice();
+  //   console.log("DEVICE", device);
+
+  //   // Get a GPU buffer in a mapped state and an arrayBuffer for writing.
+  //   const gpuBuffer = device.createBuffer({
+  //     mappedAtCreation: true,
+  //     size: 4,
+  //     usage: GPUBufferUsage.MAP_WRITE
+  //   });
+  //   const arrayBuffer = gpuBuffer.getMappedRange();
+
+  //   // Write bytes to buffer.
+  //   new Uint8Array(arrayBuffer).set([0, 1, 2, 3]);
+  // }
+
+
+  let diameter = 20;
+  let radio = diameter / 2
 
   const generateHexen = (maxCircles) => {
     const zMatrix = [-radio, -diameter, -radio, radio, diameter, radio];
-    const xMatrix = [radioX, 0, -radioX, -radioX, 0, radioX];
+    const xMatrix = [diameter, 0, -diameter, -diameter, 0, diameter];
     let hexen = [];
+
+    let firstHalfX = [];
+    let lastHalfX = [];
+    let centerX = [];
+
+    let firstSegmentX=[];    
+    let lastSegmentX=[];
+
+
+    // let target = 1;
+    // for (let z = 0; z <= target; z++) {
+    //   if (z != target) {
+    //     firstHalfX.push(z * 20 * -1);
+    //   } else {
+    //     for (let i = 0; i <= target; i++) {
+    //       centerX.push(z * -20);
+    //     }
+    //   }
+    // }
+
+    // lastHalfX = [...firstHalfX]
+    // lastHalfX.reverse().pop();
+
+    // firstSegmentX = [...firstHalfX, ...centerX, ...lastHalfX];
+    // lastSegmentX = [...firstSegmentX]
+
+    // lastSegmentX.forEach((elem, index) => {
+    //   lastSegmentX[index] = elem * -1;
+    // });
+    
+    // let circleX = [...firstSegmentX, ...lastSegmentX]; 
+
+    // // console.log("circleX", circleX);
+
+    // for(let z = 40; z >= 0; z -= 10){
+    //   console.log("Z", z)
+    // }
 
     hexen.push([[0, 0, 0]]);
 
@@ -39,7 +96,7 @@ function WorldGenerator(props) {
       let circle = [];
 
       //Y Counter
-      let zCounter = i
+      let zCounter = (i * 20)
 
       //X Counter
       let xCounter = 0;
@@ -55,6 +112,10 @@ function WorldGenerator(props) {
         }
       }
 
+      // console.log("zMatrixScaled",zMatrixScaled);
+      // console.log("xMatrixScaled",xMatrixScaled)
+
+
       // console.log("zMatrixScaled", zMatrixScaled);
       // console.log("xMatrixScaled", xMatrixScaled);
 
@@ -63,13 +124,14 @@ function WorldGenerator(props) {
       for (let n = 0; n < zMatrixScaled.length; n++) {
         zCounter = zCounter + zMatrixScaled[n]
         xCounter = xCounter + xMatrixScaled[n]
+        // console.log(i, xCounter)
         circle.push([xCounter, 0, zCounter]);
       }
 
       // console.log("circle", circle);
       hexen.push(circle)
     }
-    // console.log("PRE- HEXEN", hexen)
+    console.log("HEXEN", hexen)
     return hexen;
   }
 
@@ -96,19 +158,20 @@ function WorldGenerator(props) {
           if (i == 0) {
             // biomeSelected = { type: "plain", model: chunks.plain };
             building = props.buildings.spawn;
-            console.log("buildingbuilding", building)
+            // console.log("buildingbuilding", building)
           } else {
             biomeSelected = { type: "plain", model: chunks.plain };
           }
         } else {
           if (randomNumber <= biomeSpawn.shardium) {
+            let randomType = Math.random() * 3;
             biomeSelected = { type: "shardium", model: chunks.shardium };
           } else if (randomNumber <= biomeSpawn.iron) {
-            biomeSelected = { type: "iron", model: chunks.shardium };
+            biomeSelected = { type: "iron", model: chunks.forest };
           } else if (randomNumber <= biomeSpawn.mountain) {
             biomeSelected = { type: "mountain", model: chunks.mountain };
           } else if (randomNumber <= biomeSpawn.plateau) {
-            biomeSelected = { type: "plateau", model: chunks.plateau };
+            biomeSelected = { type: "plateau", model: chunks.plain };
           } else if (randomNumber <= biomeSpawn.plain) {
             biomeSelected = { type: "plain", model: chunks.plain };
           } else if (randomNumber <= biomeSpawn.forest) {
@@ -128,7 +191,7 @@ function WorldGenerator(props) {
   return (
     world ? world.map((circle, i) => {
       return circle.map((hex, x) => {
-        return <Hex hex={hex} delay = {(6 * i) + x} />
+        return <Hex hex={hex} delay={(6 * i) + x} />
       })
     }) : null
   )
