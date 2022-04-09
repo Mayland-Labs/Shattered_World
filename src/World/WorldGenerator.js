@@ -104,7 +104,7 @@ function WorldGenerator(props) {
           if (randomNumber <= biomeSpawn.shardium) {
             biomeSelected = { type: "shardium", model: chunks.shardium };
           } else if (randomNumber <= biomeSpawn.iron) {
-            biomeSelected = { type: "iron", model: chunks.iron };
+            biomeSelected = { type: "iron", model: chunks.shardium };
           } else if (randomNumber <= biomeSpawn.mountain) {
             biomeSelected = { type: "mountain", model: chunks.mountain };
           } else if (randomNumber <= biomeSpawn.plateau) {
