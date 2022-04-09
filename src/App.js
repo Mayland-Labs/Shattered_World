@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       <VRCanvas dpr={[1, 2]}
 
-        gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true }}
+        // gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true }}
 
         // onCreated={({ gl, scene }) => {
         //   gl.xr.setFramebufferScaleFactor(1);
