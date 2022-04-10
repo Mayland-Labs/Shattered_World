@@ -5,7 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import React, { useState, useEffect } from 'react';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-import { useGLT, Loader } from '@react-three/drei'
+import { useGLTF, Loader } from '@react-three/drei'
 import Forest from "../World/Tiles/Forest";
 import { gsap } from 'gsap'
 
@@ -13,16 +13,23 @@ function LoadingBar(props) {
     const [barProgres, setBarProgres] = useState({ num: 0 })
     const [effect, setEffect] = useState(true)
 
-    // useEffect(() => {
-    //     console.log("ITEMS", items);
-    // },[items])
 
-    // useEffect(() => {
-    //     console.log("model was loaded", nodes)
-    // }, [nodes])
-
+   
+    
+    
     useEffect(() => {
+        
         const sources = props.sources;
+        console.log("sources", sources)
+
+        sources.forEach(source => {
+            switch (source.type) {
+                case "GLTF Draco Model":
+                    let model = useGLTF.preload(source.path)
+                    console.log("MODEL", model);
+                    break;
+            }
+        });
 
         const loadingBarBackground = document.querySelector('.loadingBackground')
 
@@ -86,16 +93,6 @@ function LoadingBar(props) {
                         }
                     )
                     break;
-                // case "FBX Model":
-                //     loaders.fbxLoader.load(
-                //         source.path,
-                //         (file) => {
-                //             console.log("FBX READY", file)
-                //             // items[source.category][source.name] = file;
-                //             archiver(source, file)
-                //         }
-                //     )
-                //     break;
             }
         });
 

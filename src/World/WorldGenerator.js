@@ -17,31 +17,11 @@ function WorldGenerator(props) {
 
   useEffect(() => {
     // WebGPU()
-    let positions = generateHexen(4);
+    let positions = generateHexen(2);
     let biomes = placeBiomes(positions);
     // console.log("PORTAL", props)
     setWorld(biomes);
   }, [])
-
-  // const WebGPU = async () => {
-  //   const adapter = await navigator.gpu.requestAdapter();
-  //   console.log("adapter", adapter);
-  //   if (!adapter) { return; }
-  //   const device = await adapter.requestDevice();
-  //   console.log("DEVICE", device);
-
-  //   // Get a GPU buffer in a mapped state and an arrayBuffer for writing.
-  //   const gpuBuffer = device.createBuffer({
-  //     mappedAtCreation: true,
-  //     size: 4,
-  //     usage: GPUBufferUsage.MAP_WRITE
-  //   });
-  //   const arrayBuffer = gpuBuffer.getMappedRange();
-
-  //   // Write bytes to buffer.
-  //   new Uint8Array(arrayBuffer).set([0, 1, 2, 3]);
-  // }
-
 
   let diameter = 20;
   let radio = diameter / 2
@@ -57,36 +37,6 @@ function WorldGenerator(props) {
 
     let firstSegmentX=[];    
     let lastSegmentX=[];
-
-
-    // let target = 1;
-    // for (let z = 0; z <= target; z++) {
-    //   if (z != target) {
-    //     firstHalfX.push(z * 20 * -1);
-    //   } else {
-    //     for (let i = 0; i <= target; i++) {
-    //       centerX.push(z * -20);
-    //     }
-    //   }
-    // }
-
-    // lastHalfX = [...firstHalfX]
-    // lastHalfX.reverse().pop();
-
-    // firstSegmentX = [...firstHalfX, ...centerX, ...lastHalfX];
-    // lastSegmentX = [...firstSegmentX]
-
-    // lastSegmentX.forEach((elem, index) => {
-    //   lastSegmentX[index] = elem * -1;
-    // });
-    
-    // let circleX = [...firstSegmentX, ...lastSegmentX]; 
-
-    // // console.log("circleX", circleX);
-
-    // for(let z = 40; z >= 0; z -= 10){
-    //   console.log("Z", z)
-    // }
 
     hexen.push([[0, 0, 0]]);
 
@@ -111,15 +61,6 @@ function WorldGenerator(props) {
           xMatrixScaled.push(xMatrix[x])
         }
       }
-
-      // console.log("zMatrixScaled",zMatrixScaled);
-      // console.log("xMatrixScaled",xMatrixScaled)
-
-
-      // console.log("zMatrixScaled", zMatrixScaled);
-      // console.log("xMatrixScaled", xMatrixScaled);
-
-      // console.log("---------------------", yCounter);
 
       for (let n = 0; n < zMatrixScaled.length; n++) {
         zCounter = zCounter + zMatrixScaled[n]

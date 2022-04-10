@@ -18,7 +18,7 @@ const CameraControls = () => {
 
   const scene = useThree()
   // let ascene = scene.gl.xr.setFramebufferScaleFactor(0.5)
-  console.log(scene.gl)
+  // console.log(scene.gl)
 
   // useEffect(() => void gl.setPixelRatio(window.devicePixelRatio || 2), [])
   const XRConfig = useXR();
@@ -31,7 +31,7 @@ const CameraControls = () => {
     // scene.viewport.initialDpr = 10;
   })
 
-  console.log(XRConfig)
+  // console.log(XRConfig)
   XRConfig.player.position.set(0,10,0);
 
   // camera.position.set(0,600,0)
