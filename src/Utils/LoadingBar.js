@@ -12,7 +12,8 @@ import { gsap } from 'gsap'
 function LoadingBar(props) {
     const [barProgres, setBarProgres] = useState({ num: 0 })
     const [effect, setEffect] = useState(true)
-    
+    const [lastLoaded, setLastLoaded] = useState()
+
     useEffect(() => {
         
         const sources = props.sources;
@@ -52,7 +53,9 @@ function LoadingBar(props) {
                 // Calculate the progress and update the loadingBarElement
                 // console.log(itemsLoaded, itemsTotal)
                 const progressRatio = itemsLoaded / itemsTotal
+                console.log("LAST ITEM LOADED:", itemUrl)
                 // console.log(progressRatio)
+                setLastLoaded(itemUrl)
                 setBarProgres({ ...barProgres, num: progressRatio * 100 })
             }
         )
@@ -111,7 +114,7 @@ function LoadingBar(props) {
             <div className={stylesLoading.logoContainer}>
                 <img class={stylesLoading[`${effect ? 'logo' : 'logoActive'}`]} src='logo.png' alt='Logo' />
                 <img class={stylesLoading[`${effect ? 'crystal' : 'crystalActive'}`]} src='./LoadingBar/crystal.png' alt='Crystal' />
-                <h1>{barProgres.num}</h1>
+                <h1>{lastLoaded + "     " + barProgres.num}</h1>
                 <div style={styleCrystal} class={stylesLoading.crystalGray}></div>
             </div>
         </div>
