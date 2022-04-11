@@ -56,12 +56,6 @@ export default [
         path: 'Buildings/Spawn.glb',
     },
     {
-        name: 'avatar',
-        type: 'GLTF Draco Model',
-        category: "avatar",
-        path: 'Avatar/Avatar.glb',
-    },
-    {
         name: 'staff',
         type: 'GLTF Draco Model',
         category: "items",
