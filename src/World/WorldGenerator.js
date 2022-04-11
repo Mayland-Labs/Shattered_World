@@ -17,7 +17,7 @@ function WorldGenerator(props) {
 
   useEffect(() => {
     // WebGPU()
-    let positions = generateHexen(4);
+    let positions = generateHexen(2);
     let biomes = placeBiomes(positions);
     console.log("items", props.items.staff)
     // console.log("PORTAL", props)
