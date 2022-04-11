@@ -47,7 +47,6 @@ function App() {
         <axesHelper />
         {assets.avatar && <Avatar avatar={assets.avatar}></Avatar>}
       </VRCanvas>
-      <Loader />
       <LoadingBar sources={Sources} assetHandler={assetHandler} />
     </div>
   );
