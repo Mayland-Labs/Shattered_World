@@ -41,7 +41,7 @@ const CameraControls = () => {
 
   // useFrame((state) => controls.current.update());
   return (
-    <OrbitControls  />
+    <OrbitControls minDistance = {50} />
   );
 };
 
