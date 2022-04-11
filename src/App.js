@@ -31,9 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      <VRCanvas dpr={window.devicePixelRatio}
-        gl={{ powerPreference: 'high-performance', depth: true, stencil: false, antialias: true }}
-        >
+      <VRCanvas dpr={window.devicePixelRatio} antialias={true}        >
 
         <DefaultXRControllers />
         <ambientLight />
