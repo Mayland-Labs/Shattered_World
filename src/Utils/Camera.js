@@ -41,8 +41,7 @@ const CameraControls = () => {
 
   // useFrame((state) => controls.current.update());
   return (
-    // <OrbitControls  />
-    null
+    <OrbitControls  />
   );
 };
 

@@ -17,18 +17,27 @@ function WorldGenerator(props) {
 
   useEffect(() => {
     // WebGPU()
-    let positions = generateHexen(2);
+    let positions = generateHexen(4);
     let biomes = placeBiomes(positions);
+    console.log("items", props.items.staff)
     // console.log("PORTAL", props)
     setWorld(biomes);
   }, [])
 
-  let diameter = 20;
-  let radio = diameter / 2
+  // let size = (10/Math.cos(Math.PI/4))
+  let size = 10;
+
+  let width = size * 2;
+  let height = Math.sqrt(3) * size;
+
+  let widthDistance = width * 3/4;
+  let heightDistance = height;
+  let halfHeightDistance = height / 2;
+
 
   const generateHexen = (maxCircles) => {
-    const zMatrix = [-radio, -diameter, -radio, radio, diameter, radio];
-    const xMatrix = [diameter, 0, -diameter, -diameter, 0, diameter];
+    const zMatrix = [-size, -heightDistance, -size, size, heightDistance, size];
+    const xMatrix = [widthDistance, 0, -widthDistance, -widthDistance, 0, widthDistance];
     let hexen = [];
 
     let firstHalfX = [];
@@ -94,11 +103,15 @@ function WorldGenerator(props) {
         let randomNumber = Math.random();
         let biomeSelected = {};
         let building = null;
+        let items = null;
 
         if (i == 0 || i == 1) {
           if (i == 0) {
             // biomeSelected = { type: "plain", model: chunks.plain };
             building = props.buildings.spawn;
+
+            console.log("xDD", props.items.staff)
+            items = props.items.staff
             // console.log("buildingbuilding", building)
           } else {
             biomeSelected = { type: "plain", model: chunks.plain };
@@ -121,7 +134,7 @@ function WorldGenerator(props) {
         }
 
         // console.log("biomeSelected", biomeSelected)
-        ecosystem[i].push({ position: pos, type: biomeSelected.type, model: biomeSelected.model, buildings: building, circle: i })
+        ecosystem[i].push({ position: pos, type: biomeSelected.type, model: biomeSelected.model, buildings: building, items: items, circle: i })
       })
     })
 

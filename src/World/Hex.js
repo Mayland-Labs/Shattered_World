@@ -3,50 +3,56 @@ import React, { useRef, useState, useMemo, Suspense, useEffect } from 'react'
 import { useGLTF } from '@react-three/drei';
 import { useSpring, animated } from '@react-spring/three'
 import { TimelineLite } from "gsap/all";
-
-
+import Staff from "./Staff"
 
 function Hex(props) {
   const [position, setPosition] = useState({ ...props.hex.position })
+  const [randomTilt, setRandomTilt] = useState(Math.round(Math.random() * 7))
 
-  // console.log("position", position);
+  const [scene, setScene] = useState()
+  const [buildings, setBuildings] = useState()
+  const [portalPos, setPortalPos] = useState()
+  const [items, setItems] = useState()
+
+  const {spawn} = useSpring({
+    from: { spawn: [position[0], -100, position[2]]},
+    to: {spawn: [position[0], 0, position[2]]},
+    delay: 1000 * props.delay,
+    config: {duration: 30000},
+});
+
+
+  useEffect(() => {    
+  // let auxPos = position;
+
+    // console.log("position", position);
   //Animated Spawn
-//   const {spawn} = useSpring({
-//     from: { spawn: [position[0], -100, position[2]]},
-//     to: {spawn: [position[0], 0, position[2]]},
-//     delay: 1000 * props.delay,
-//     config: {duration: 30000},
-// });
 
-  // console.log("SPAWN", spawn)
-  // console.log("POSITION", position);
-  let auxPos = position;
+
 
   const type = props.hex.type
   // console.log("POSITIONNNNNN", position)
   // console.log("POSPOSPOS", position)
-  let scene
   if (props.hex.model) {
-    scene = props.hex.model.scene.clone();
+    setScene(props.hex.model.scene.clone());
   }
-  const randomTilt = Math.round(Math.random() * 7);
+
   const circle = props.hex.circle;
   // console.log("circle", props.hex.circle);
 
-  //Buildings
-  let buildings;
-  let portalPos;
 
   if (props.hex.buildings) {
     // console.log("HEREEEEEEEE", props.hex.buildings)
-    buildings = props.hex.buildings;
-    // console.log("buildings",  buildings)
-    portalPos = { ...position };
+    setBuildings(props.hex.buildings);
+    setPortalPos({ ...position });
     // console.log("pportalHeight", portalPos);
+  } 
+
+  if(props.hex.items){
+    setItems(props.hex.items)
   }
 
   //Height
-
   if (circle > 1) {
     let randomHeight;
     if (type == "shardium" || type == "mountain" || type == "plateau" | type == "iron") {
@@ -59,14 +65,15 @@ function Hex(props) {
   } else {
     // position[1] = 0;
   }
-
-
   // console.log("POSITIONNN", position)
+
+  }, [])
 
   return (
     <group>
-      {scene && <animated.primitive position={[position[0], 0, position[2]]} scale = {[20,20,20]} dispose={null} object={scene} rotation={[0, (1.5 * Math.PI) + (Math.PI / 3) * randomTilt, 0]} />}
+      {scene && <animated.primitive position={spawn} scale = {[20,20,20]} dispose={null} object={scene} rotation={[0, (1.5 * Math.PI) + (Math.PI / 3) * randomTilt, 0]} />}
       {buildings ? <primitive position={[portalPos[0], 0, portalPos[2]]} scale = {[20,20,20]} dispose={null} object={buildings.scene} rotation={[0, (1.5 * Math.PI), 0]} /> : null}
+      {items ? <Staff items={items}/> : null}
     </group>
   );
 }

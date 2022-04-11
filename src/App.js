@@ -43,7 +43,7 @@ function App() {
         {/* {assets.envMap && <Enviroment envMap={assets.envMap} />} */}
         <Sky distance={45000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
         <CameraControls />
-        {assets.world && <WorldGenerator hexArr={hexArr} worldAssets={assets.world} buildings={assets.buildings} />}
+        {assets.world && <WorldGenerator hexArr={hexArr} worldAssets={assets.world} buildings={assets.buildings} items={assets.items}/>}
         <axesHelper />
         {assets.avatar && <Avatar avatar={assets.avatar}></Avatar>}
       </VRCanvas>
