@@ -21,10 +21,10 @@ const CameraControls = () => {
   // console.log(scene.gl)
 
   // useEffect(() => void gl.setPixelRatio(window.devicePixelRatio || 2), [])
-  // const XRConfig = useXR();
+  const XRConfig = useXR();
 
   // console.log(XRConfig)
-  // XRConfig.player.position.set(0,10,0);
+  XRConfig.player.position.set(0,10,0);
 
   // camera.position.set(0,600,0)
 
