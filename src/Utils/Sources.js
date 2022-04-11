@@ -20,12 +20,6 @@ export default [
         path: 'World/Chunks/forestChunk.glb',
     },
     {
-        name: 'ironChunk',
-        type: 'GLTF Draco Model',
-        category: "world",
-        path: 'World/Chunks/ironChunk.glb',
-    },
-    {
         name: 'crystalChunk',
         type: 'GLTF Draco Model',
         category: "world",

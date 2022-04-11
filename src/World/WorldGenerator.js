@@ -8,7 +8,7 @@ function WorldGenerator(props) {
   const [chunks, setChunks] = useState({
     forest: props.worldAssets.forestChunk,
     plain: props.worldAssets.plainChunk,
-    iron: props.worldAssets.ironChunk,
+    // iron: props.worldAssets.ironChunk,
     shardium: props.worldAssets.crystalChunk,
     mountain: props.worldAssets.mountainChunk,
     plateau: props.worldAssets.plateauChunk,
