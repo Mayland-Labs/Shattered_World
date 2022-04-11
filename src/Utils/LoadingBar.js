@@ -18,16 +18,7 @@ function LoadingBar(props) {
         
         const sources = props.sources;
         console.log("sources", sources)
-
-        sources.forEach(source => {
-            switch (source.type) {
-                case "GLTF Draco Model":
-                    let model = useGLTF.preload(source.path)
-                    console.log("MODEL", model);
-                    break;
-            }
-        });
-
+        
         const loadingBarBackground = document.querySelector('.loadingBackground')
 
         const loadingManager = new THREE.LoadingManager(

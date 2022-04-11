@@ -16,23 +16,15 @@ const CameraControls = () => {
   // We need these to setup the OrbitControls component.
   // https://threejs.org/docs/#examples/en/controls/OrbitControls
 
-  const scene = useThree()
+  // const scene = useThree()
   // let ascene = scene.gl.xr.setFramebufferScaleFactor(0.5)
   // console.log(scene.gl)
 
   // useEffect(() => void gl.setPixelRatio(window.devicePixelRatio || 2), [])
-  const XRConfig = useXR();
-  useXRFrame((time, xrFrame) => {
-    
-    // do something on each frame of an active XR session
-    // scene.setDpr(10);
-    // scene.viewport.aspect = 1
-    // console.log("scene", scene.gl.getPixelRatio())
-    // scene.viewport.initialDpr = 10;
-  })
+  // const XRConfig = useXR();
 
   // console.log(XRConfig)
-  XRConfig.player.position.set(0,10,0);
+  // XRConfig.player.position.set(0,10,0);
 
   // camera.position.set(0,600,0)
 
