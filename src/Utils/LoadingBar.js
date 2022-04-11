@@ -12,10 +12,6 @@ import { gsap } from 'gsap'
 function LoadingBar(props) {
     const [barProgres, setBarProgres] = useState({ num: 0 })
     const [effect, setEffect] = useState(true)
-
-
-   
-    
     
     useEffect(() => {
         
@@ -115,6 +111,7 @@ function LoadingBar(props) {
             <div className={stylesLoading.logoContainer}>
                 <img class={stylesLoading[`${effect ? 'logo' : 'logoActive'}`]} src='logo.png' alt='Logo' />
                 <img class={stylesLoading[`${effect ? 'crystal' : 'crystalActive'}`]} src='./LoadingBar/crystal.png' alt='Crystal' />
+                <h1>{barProgres.num}</h1>
                 <div style={styleCrystal} class={stylesLoading.crystalGray}></div>
             </div>
         </div>
