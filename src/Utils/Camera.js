@@ -46,8 +46,7 @@ const CameraControls = (props) => {
 
   // useFrame((state) => controls.current.update());
   return (
-    // <PointerLockControls />
-    null
+    <OrbitControls/>
   );
 };
 

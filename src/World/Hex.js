@@ -17,8 +17,10 @@ function Hex(props) {
   const {spawn} = useSpring({
     from: { spawn: [position[0], -75, position[2]]},
     to: {spawn: [position[0], 0, position[2]]},
-    delay: 500 * props.delay,
-    config: {duration: 15000},
+    // delay: 500 * props.delay,
+    // config: {duration: 15000},
+        config: {duration: 0},
+
 });
 
 
