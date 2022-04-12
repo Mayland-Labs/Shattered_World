@@ -53,7 +53,7 @@ function LoadingBar(props) {
                 // Calculate the progress and update the loadingBarElement
                 // console.log(itemsLoaded, itemsTotal)
                 const progressRatio = itemsLoaded / itemsTotal
-                console.log("LAST ITEM LOADED:", itemUrl)
+                // console.log("LAST ITEM LOADED:", itemUrl)
                 // console.log(progressRatio)
                 setLastLoaded(itemUrl)
                 setBarProgres({ ...barProgres, num: progressRatio * 100 })

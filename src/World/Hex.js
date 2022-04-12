@@ -15,10 +15,10 @@ function Hex(props) {
   const [items, setItems] = useState()
 
   const {spawn} = useSpring({
-    from: { spawn: [position[0], -100, position[2]]},
+    from: { spawn: [position[0], -75, position[2]]},
     to: {spawn: [position[0], 0, position[2]]},
-    delay: 1000 * props.delay,
-    config: {duration: 30000},
+    delay: 500 * props.delay,
+    config: {duration: 15000},
 });
 
 

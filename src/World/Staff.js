@@ -19,7 +19,7 @@ function Staff(props) {
     })
 
     return (
-        <primitive position={[-0.3, 10.2, 3.5]} scale={[4, 4, 4]} dispose={null} object={staff} rotation={[0,Math.PI/2,0]}/>
+        <primitive position={[-0.3, 10.2, 3.5]} scale={[3, 3, 3]} dispose={null} object={staff} rotation={[0,Math.PI/2,0]}/>
     )
 }
 

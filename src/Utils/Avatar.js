@@ -4,13 +4,15 @@ import { useGLTF } from '@react-three/drei';
 
 
 function Avatar(props) {
-    const [avatar, setAvatar] = useState(props.avatar.avatar)
+    const [avatar, setAvatar] = useState(props.avatar.avatar.scene)
     console.log("PROPS AVATAR", avatar);
-    // console.log("AVATAR SPAWN", avatar)
+
+    avatar.traverse( function( object ) {
+        object.frustumCulled = false;
+    } );
 
     return (
-        // <primitive position={[0.1,0.26,0.3]} dispose={null} scale={0.1,0.1,0.1} object={avatar.scene} />
-        null 
+        <primitive position={[-0.5,9.5,0]} scale={[1.8,1.8,1.8]} object={avatar} />
     )
 }
 
