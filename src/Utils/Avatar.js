@@ -5,7 +5,7 @@ import { useGLTF } from '@react-three/drei';
 
 function Avatar(props) {
     const [avatar, setAvatar] = useState(props.avatar.avatar)
-
+    console.log("PROPS AVATAR", avatar);
     // console.log("AVATAR SPAWN", avatar)
 
     return (

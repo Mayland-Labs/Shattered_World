@@ -7,7 +7,6 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 // import { useGLTF } from '@react-three/drei'
 
 import { gsap } from 'gsap'
-useGLTF.preload('/World/Chunks/forestChunk.glb')
 
 function LoadingBar(props) {
     const [barProgres, setBarProgres] = useState({ num: 0 })
@@ -52,7 +51,7 @@ function LoadingBar(props) {
                 // Calculate the progress and update the loadingBarElement
                 // console.log(itemsLoaded, itemsTotal)
                 const progressRatio = itemsLoaded / itemsTotal
-                console.log(progressRatio)
+                // console.log(progressRatio)
                 setBarProgres({ ...barProgres, num: progressRatio * 100 })
             }
         )

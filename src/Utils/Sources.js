@@ -61,4 +61,10 @@ export default [
         category: "items",
         path: 'Items/staff.glb',
     },
+    {
+        name: 'avatar',
+        type: 'GLTF Draco Model',
+        category: "avatar",
+        path: 'avatar.glb',
+    },
 ]
