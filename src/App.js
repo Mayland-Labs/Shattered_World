@@ -26,12 +26,12 @@ function App() {
   }, []);
 
 
-  //   const {railCamera} = useSpring({
-  //     from: { railCamera: [0,12,-30]},
-  //     to: {railCamera: [0,12,-2.1]},
-  //     delay: 10000,
-  //     config: {duration: 35000},
-  // });
+    const {railCamera} = useSpring({
+      from: { railCamera: [0,12,-30]},
+      to: {railCamera: [0,12,-2.1]},
+      delay: 10000,
+      config: {duration: 35000},
+  });
 
   const assetHandler = (assets) => {
     console.log("Assets Loaded", assets);
@@ -43,10 +43,9 @@ function App() {
       <Canvas dpr={window.devicePixelRatio} >
         {/* <DefaultXRControllers /> */}
         <ambientLight />
-        {/* <animated.group position={railCamera} rotation={[0,Math.PI,0]}> */}
-        {/* <animated.group rotation={[0,Math.PI,0]}>
+        <animated.group position={railCamera} rotation={[0,Math.PI,0]}>
           <PerspectiveCamera makeDefault  />
-        </animated.group> */}
+        </animated.group>
         {/* {assets.envMap && <Enviroment envMap={assets.envMap} />} */}
         <Sky distance={45000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
         <CameraControls />
