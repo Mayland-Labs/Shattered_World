@@ -35,7 +35,7 @@ html {
   align-items: center;
   justify-content: center;
   background-color: black;
-  background-image: url("../public/LoadingBar/loadingBackground.jpg");
+  background-image: url("../public/LoadingBar/loadingBackground.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

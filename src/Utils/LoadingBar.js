@@ -114,7 +114,6 @@ function LoadingBar(props) {
             <div className={stylesLoading.logoContainer}>
                 <img class={stylesLoading[`${effect ? 'logo' : 'logoActive'}`]} src='logo.png' alt='Logo' />
                 <img class={stylesLoading[`${effect ? 'crystal' : 'crystalActive'}`]} src='./LoadingBar/crystal.png' alt='Crystal' />
-                <h1>{lastLoaded + "     " + barProgres.num}</h1>
                 <div style={styleCrystal} class={stylesLoading.crystalGray}></div>
             </div>
         </div>
